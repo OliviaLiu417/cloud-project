@@ -107,31 +107,31 @@ def lambda_handler(event, context):
     # get entertainment articles
     category = "entertainment"
     url_entertainment = f'https://newsapi.org/v2/top-headlines?country=us&category=entertainment&apiKey={NEWS_API_KEY}'
-    result_obj = call_news_url(category, url_business)
+    result_obj = call_news_url(category, url_entertainment)
     write_to_database(category, result_obj)
     
     # get health articles
     category = "health"
     url_health = f'https://newsapi.org/v2/top-headlines?country=us&category=health&apiKey={NEWS_API_KEY}'
-    result_obj = call_news_url(category, url_business)
+    result_obj = call_news_url(category, url_health)
     write_to_database(category, result_obj)
     
     # get scieence articles
     category = "science"
-    url_health = f'https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey={NEWS_API_KEY}'
-    result_obj = call_news_url(category, url_business)
+    url_science = f'https://newsapi.org/v2/top-headlines?country=us&category=science&apiKey={NEWS_API_KEY}'
+    result_obj = call_news_url(category, url_science)
     write_to_database(category, result_obj)
     
     # get sports articles
     category = "sports"
-    url_health = f'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey={NEWS_API_KEY}'
-    result_obj = call_news_url(category, url_business)
+    url_sports = f'https://newsapi.org/v2/top-headlines?country=us&category=sports&apiKey={NEWS_API_KEY}'
+    result_obj = call_news_url(category, url_sports)
     write_to_database(category, result_obj)
     
     # get technology articles
     category = "technology"
-    url_health = f'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={NEWS_API_KEY}'
-    result_obj = call_news_url(category, url_business)
+    url_technology = f'https://newsapi.org/v2/top-headlines?country=us&category=technology&apiKey={NEWS_API_KEY}'
+    result_obj = call_news_url(category, url_technology)
     write_to_database(category, result_obj)
     
     

@@ -22,12 +22,19 @@ const Keywords = ({ category }) => {
     setDisplayCategory(category === "topHeadlines" ? "trending" : category);
   }, [category]);
 
+  const options = {
+    luminosity: 'dark',
+    hue: '#007bff',
+  }
+  
+
   return (
     <div className={styles.conatainer}>
       <span className={styles.span}>
-        Today's keywords for {displayCategory}
+        Today&apos;s keywords for{' '}
+        <span className={styles.displayCategory}>{displayCategory}</span>
       </span>
-      <TagCloud minSize={20} maxSize={40} tags={data} />
+      <TagCloud minSize={20} maxSize={40} colorOptions={options} tags={data} className={styles.tagCloud}/>
     </div>
   );
 };

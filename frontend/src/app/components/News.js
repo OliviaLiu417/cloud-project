@@ -30,7 +30,7 @@ const News = ({ category, selectedSource, setCounts }) => {
           ...article,
           urlToImage:
             article.urlToImage === "not_available"
-              ? "https://placehold.co/600x400"
+              ? "not_available"
               : article.urlToImage,
         }));
 
@@ -61,19 +61,30 @@ const News = ({ category, selectedSource, setCounts }) => {
 
   return (
     <>
+      <hr className={styles.split}></hr>
       <div className={styles.grid}>
         {articles.map((article, index) => (
-          <div key={index} className={styles.card}>
-            {article.urlToImage && (
-              <div className={styles.cardImage}>
+          <a
+            key={index}
+            href={article.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.card}
+          >
+            <div className={styles.cardImage}>
+              {article.urlToImage && article.urlToImage !== "not_available" ? (
                 <ExternalImage src={article.urlToImage} alt={article.title} />
-              </div>
-            )}
-            <Link href={article.url} target="_blank" rel="noopener noreferrer">
+              ) : (
+                <div className={styles.sourceBox}>
+                  <p className={styles.sourceText}>{article.source}</p>
+                </div>
+              )}
+            </div>
+            <div className={styles.cardContent}>
               <p>{article.title}</p>
-            </Link>
-            <span>source: {article.source}</span>
-          </div>
+              <span>source: {article.source}</span>
+            </div>
+          </a>
         ))}
       </div>
     </>

@@ -52,3 +52,17 @@
 .footerLinks small {
     margin-right: 8px;
 }
+
+@media (max-width: 768px) {
+    .footerContent {
+        width: 100%;
+        padding: 0;
+        margin-left: 16px;
+    }
+    .footerLogo {
+        display: none;
+    }
+    .footerText {
+        margin-left: 0px;
+    }
+}

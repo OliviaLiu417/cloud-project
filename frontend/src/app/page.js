@@ -8,13 +8,15 @@ import { Suspense } from "react";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Suspense>
-        <Header />
-      </Suspense>
-      <div className={styles.container}>
+      <div className={styles.contentContainer}>
         <Suspense>
-          <Content />
+          <Header />
         </Suspense>
+        <div className={styles.container}>
+          <Suspense>
+            <Content />
+          </Suspense>
+        </div>
       </div>
       <Footer />
     </main>

@@ -1,6 +1,12 @@
 .topContainer {
   display: flex;
-  justify-content: space-between; /* This aligns one item to the left and the other to the right */
+  justify-content: space-between;
   align-items: center;
   padding-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+  .topContainer {
+    flex-direction: column;
+  }
 }

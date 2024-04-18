@@ -4,8 +4,31 @@
   padding-bottom: 2rem;
 }
 .span {
-  color: rgba(46, 46, 46, 0.743);
+  color: rgb(0, 0, 0);
   font-size: 1.8rem;
   font-weight: 400;
   margin-bottom: 1rem;
+}
+
+.displayCategory {
+  color: #007bff;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.tagCloud {
+  text-transform: capitalize;
+}
+
+@media (max-width: 768px) {
+  .conatainer {
+    place-items: baseline;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  .tagCloud {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

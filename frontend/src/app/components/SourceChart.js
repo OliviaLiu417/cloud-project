@@ -3,6 +3,16 @@ import React, { useState, useEffect, forwardRef } from "react";
 import { Doughnut } from "react-chartjs-2";
 import "chart.js/auto";
 
+const colors = [
+  "#FF6384",
+  "#36A2EB",
+  "#FFCE56",
+  "#4BC0C0",
+  "#9966FF",
+  "#FF9F40",
+  "#E7E9ED",
+];
+
 const SourceChart = forwardRef(
   ({ category, setSelectedSource, counts }, ref) => {
     const [renderData, setRenderData] = useState();
@@ -17,6 +27,7 @@ const SourceChart = forwardRef(
           {
             label: "Sources",
             data: Object.values(sortedData),
+            backgroundColor: colors,
             borderWidth: 1,
           },
         ],
@@ -44,5 +55,7 @@ const SourceChart = forwardRef(
     );
   }
 );
+
+SourceChart.displayName = "SourceChart";
 
 export default SourceChart;

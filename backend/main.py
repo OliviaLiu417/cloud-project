@@ -3,8 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import keywords
 import database
-from datetime import datetime, timedelta
-import datetime as dt
+from datetime import datetime, timedelta, timezone
 
 class Data(BaseModel):
     key: str
@@ -44,7 +43,7 @@ async def load_test():
     return {"message": "Load Test Completed!!"}
 
 def get_today_news():
-    today = datetime.now(dt.UTC).strftime("%Y-%m-%d")
+    today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     cached_data = cache['todayNews'].get(today)
 
     if cached_data:
@@ -75,7 +74,7 @@ def fetch_and_cache_keywords(category):
     analysis = keywords.get_analysis(articles)
     cache['keywords'][category] = {
         "data": analysis,
-        "timestamp": datetime.now(dt.UTC)
+        "timestamp": datetime.now(timezone.utc)
     }
 
 @app.get("/keywords/{category}/")
@@ -84,6 +83,6 @@ async def get_keywords_analysis(category="total"):
     Get the keyword analysis
     """
     # update or invalidate cache
-    if category not in cache['keywords'] or (datetime.now(dt.UTC) - cache['keywords'][category]["timestamp"]) > timedelta(hours=24):
+    if category not in cache['keywords'] or (datetime.now(timezone.utc) - cache['keywords'][category]["timestamp"]) > timedelta(hours=24):
         fetch_and_cache_keywords(category)
     return cache['keywords'][category]['data']
